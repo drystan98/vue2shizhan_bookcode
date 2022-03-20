@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 单条语句的渲染 -->
+        <div>
+            <p v-if="status==1">当前为1</p>
+            <p v-else-if="status==2">当前为2</p>
+            <p v-else="status==3">当前为3</p>
+        </div>
+
+
+        <!-- 多条语句判断用template -->
+        <div>
+            <template v-if="status==1">
+                <p>一段文字</p>
+                <p>一段文字</p>
+                <p>一段文字</p>
+            </template>
+        </div>
+
+        <!-- 复用已有的元素 -->
+        <div>
+            <template v-if="type=='name'>
+                <label>用户名</label>
+                <input placeholder="输入用户名" key="user">
+            </template>
+            <template v-else>
+                <label>邮箱</label>
+                <input placeholder="输入邮箱" key="email">
+            </template>
+            <button @click="handleToggleClick">切换输入类型</button>
+        </div>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                status: 1,
+                type : 'name'
+            },
+            methods: {
+                handleToggleClick: function () {
+                    this.type = this.type == 'name' ? 'email' : 'name';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

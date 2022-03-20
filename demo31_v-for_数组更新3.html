@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <button @click="way1">修改1</button>
+        <button @click="way2">修改2</button>
+        <button @click="way3">修改3</button>
+        <button @click="way4">修改4</button>
+        <ul>
+            <li v-for="(book,index) in books">{{index}}-{{book.name}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books:[
+                    {
+                        name:'Vue'
+                    },
+                    {
+                        name:'Java'
+                    }
+                ]
+            },
+            methods:{
+                // 修改不能更新视图
+                way1:function(){
+                    this.books[1]={
+                        name:'SQL'
+                    }
+                },
+                // 修改后可以更新视图
+                way2:function(){
+                    Vue.set(app.books,1,{
+                        name:'SQL'
+                    });
+                },
+                //修改后可以更新视图
+                way3:function(){
+                    this.$set(app.books,1,{
+                        name:'SQL'
+                    })
+                },
+                 //修改后可以更新视图
+                way4:function(){
+                    app.books.splice(1,1,{
+                        name:'SQL'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

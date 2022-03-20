@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <span v-once>
+            v-once: {{messgae}}
+        </span>
+        <span>
+            普通: {{messgae}}
+        </span>
+        <button @click="messgae='Vue'">变换</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                messgae:'文本'
+            }
+        });
+    </script>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-bind 数据绑定 -->
+        <p :href="url">链接</p>
+        <img :src="src">
+        
+        <!-- v-if  -->
+        <p v-if="show">{{message}}</p>
+        <!-- 可以在click="" 里面直接写语句,也可以调用方法 -->
+        <button @click="handleSwitch">{{btn ? '隐藏':'显示'}}</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                url:'#',
+                src:'#',
+
+                message: '文字数据',
+                show: true,
+                btn: true
+            },
+            methods: {
+                handleSwitch: function () {
+                    this.show = !this.show;
+                    this.btn = !this.btn;
+                }
+            }
+
+        }) 
+    </script>
+</body>
+
+</html>

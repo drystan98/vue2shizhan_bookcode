@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>实时显示时间</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 实时显示时间 -->
+            {{date}}    
+        </div>
+
+        <!-- script begin -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    date:new Date()
+                },
+                mounted:function(){
+                    var _this = this;   //声明一个变量指向vue实例的this,保证作用域一致.
+                    this.timer = setInterval(function(){
+                        _this.date = new Date();    //修改数据date
+                    },1000);
+                },
+                beforeDestory:function(){
+                    if(this.timer){
+                        clearInterval(this.timer);  //在Vue实例销毁前,清楚我们的定时器
+                    }
+                }
+            })      
+        </script>
+        <!-- script end -->
+    </body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">        
+        价格: {{prices}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app", //实例绑定的标签
+            data: {     //实例绑定的数据
+               package1:[
+                    {
+                        name:'苹果13',
+                        price:8999,
+                        count:10
+                    },
+                    {
+                        name:'小米13',
+                        price:4000,
+                        count:89
+                    }
+               ],
+               package2:[
+                   {
+                       name:'华为',
+                       price:8981.123,
+                       count:12
+                   }
+               ]
+            },
+            methods: {  //方法属性
+               
+            },
+            computed:{  //计算属性
+                prices:function(){
+                    var prices = 0;
+                    for(var i=0; i < this.package1.length;i++){
+                        prices += this.package1[i].price * this.package1[i].count;
+                    }
+                    for(var i=0; i < this.package2.length;i++){
+                        prices += this.package2[i].price * this.package2[i].count;
+                    }
+                    console.log(prices);
+                    return  prices;
+                }
+              
+            }
+
+        }) 
+    </script>
+</body>
+
+</html>

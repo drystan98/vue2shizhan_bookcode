@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Vue钩子</title>
+    </head>
+    <body>
+        <div id="app">
+            {{a}}
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    a:12
+                },
+                created:function(){
+                    console.log(this.a)
+                },
+                mounted:function(){
+                    console.log(this.$el);
+                },
+                beforeDestory:function(){
+                    console.log(this.$el);
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="app">
+            <!-- 10 -->
+            {{number/10}}       
+            <!-- 取消 -->
+            {{isOk ? "确定":"取消"}}
+            <!-- 456,123 -->
+            {{text.split(',').reverse().join(',')}}
+        </div>
+
+        <!-- script begin -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el:'#app',
+                data:{
+                   number:100,
+                   isOk:false,
+                   text:'123,456'
+                }
+            })      
+        </script>
+        <!-- script end -->
+    </body>
+
+</html>

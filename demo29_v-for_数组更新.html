@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <button @click="add">添加</button>
+        <ul>
+            <li v-for="(book,index) in books">{{index}}-{{book.name}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books:[
+                    {
+                        name:'Vue'
+                    },
+                    {
+                        name:'Java'
+                    }
+                ]
+            },
+            methods:{
+                add:function(){
+                    this.books.push({
+                        name:'C++'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

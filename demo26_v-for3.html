@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-for多元素渲染 -->
+        <ul>
+            <template v-for="(book,index) of books">
+                <li>序号:{{index}}</li>
+                <li>书名:{{book.name}}</li>
+                <li>价格:{{book.price}}</li>
+            </template>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {
+                        name: 'Vue',
+                        price: 123
+                    },
+                    {
+                        name: 'Java',
+                        price: 999
+                    },
+                    {
+                        name: 'C++',
+                        price: 100
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

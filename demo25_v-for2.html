@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- index 遍历的顺序 -->
+            <li v-for="(book,index) in books">
+                序号:{{index}} 书名: {{book.name}} 价格: {{book.price}}
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {
+                        name: 'Vue',
+                        price: 123
+                    },
+                    {
+                        name: 'Java',
+                        price: 999
+                    },
+                    {
+                        name: 'C++',
+                        price: 100
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

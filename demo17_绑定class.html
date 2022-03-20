@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+    <div id="app">
+        <!-- 单个class绑定 -->
+        <!--  <div id="div1" class="active"></div> -->
+        <div id="div1" v-bind:class="'active':isActive"></div>
+
+        <!-- 多个class绑定, 并且普通class可以和v-bind:class共存 -->
+        <!-- <div id="div2" class="ss active error"  -->
+        <div id="div2" class="ss" v-bind:class="'active':isActive 'error':isError"></div>
+
+        <!-- 多个class绑定时,可以使用计算属性 -->
+        <div id="div3" :class="classes"></div>
+    </div>
+<body>
+    <div id="app">
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                // 多个类属性开关
+                isActive:true,
+                isError:null,
+            },
+            computed:{
+                classes:function(){
+                    return {    //返回一个对象
+                        active:this.isActive && !this.isError,
+                        'text-fail':this.isError && this.isError.type === 'fail'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
