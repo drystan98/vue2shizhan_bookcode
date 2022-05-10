@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <!-- 单个 -->
+            <select v-model="selected1">
+                <option value="html">HTML</option>
+                <option value="js">JS</option>
+                <option value="css">CSS</option>
+            </select>
+            选择:{{selected1}}
+        </div>
+        <br>
+        <div>
+           <!-- 多个 -->
+           <select v-model="selected2" multiple>
+                <option value="html">HTML</option>
+                <option value="js">JS</option>
+                <option value="css">CSS</option>
+            </select>
+            选择:{{selected2}}
+        </div>
+    </div>
+
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                selected1:'html',
+                selected2:['html','js']
+            }
+        }) 
+    </script>
+</body>
+
+</html>

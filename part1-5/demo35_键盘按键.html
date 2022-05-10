@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <a href="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js" 
+        @keyup.shift.83="handleClick('禁止打开',$event)">打开链接</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                handleClick: function (message,event) {
+                    event.preventDefault(); //禁止打开
+                    window.alert(message);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

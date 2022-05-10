@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        <p>总数:{{total}}</p>
+        <button @click="handleReduce">-1</button>
+        <!-- 子组件和父组件数据双向绑定 -->
+        <my-component v-model="total"></my-component>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        // 创建1个Vue组件
+        Vue.component('my-component', {
+            props:['value'],
+            template:'<input :value="value" @input="updateValue">',
+            methods:{
+                updateValue:function(){
+                    //  ?
+                    this.$emit('input',event.target.value); 
+                }
+            }
+        })
+
+        // 创建一个Vue实例app
+        var app = new Vue({
+            el: '#app',
+            data: {
+                total: 0
+            },
+            methods: {
+                handleReduce: function () {
+                    this.total--;
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

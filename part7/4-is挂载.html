@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        <table>
+            <!-- is挂载 -->
+            <tbody is="my-component"></tbody>
+        </table>
+    </div>
+
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            template: '<div><td><tr>1</tr><tr>2</tr></td></div>'
+        });
+
+        var app = new Vue({
+            el: '#app'
+        })
+
+    </script>
+</body>
+
+</html>

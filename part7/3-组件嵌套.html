@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+
+    <div id='app'>
+        <languages></languages>
+    </div>
+
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('languages', {
+            data: function () {
+                return {
+                    yys: ['PHP', 'JS', 'GO']
+                }
+            },
+            template: '<ul><language v-for="yy in yys">{{yy}}</ul>'
+        })
+
+        Vue.component('language', {
+            template: '<li><slot></slot></li>'
+        })
+
+        var app = new Vue({
+            el: '#app'
+        })
+
+    </script>
+</body>
+
+</html>

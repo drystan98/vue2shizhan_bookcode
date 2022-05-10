@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <my-component></my-component>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@1.0/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            template: '<button @click="handleDispatch">派发事件</button>',
+            methods: {
+                // $dispatch
+                handleDispatch: function () {
+                    this.$dispatch('on-message', '来自内部组件的数据');
+                }
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: ''
+            },
+            events: {
+                'on-message': function (msg) {
+                    this.message = msg;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+
+    <div id='app'>
+        <p>输入框1</p>
+        <input type="text">
+        <br>
+        <p>输入框2</p>
+        <input type="text" v-focus>
+    </div>
+
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        // 自定义指令
+        Vue.directive('focus', {
+            // 被绑定元素插入父节点时调用
+            inserted: function (el) {
+                el.focus();
+            },
+
+        })
+
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

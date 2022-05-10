@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+
+    <div id='app'>
+        <!-- 使用简单组件 -->
+        <my-component></my-component>
+    </div>
+
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        // 全局注册组件
+        Vue.component('my-component', {
+            template: '<div>你好</div>'
+        });
+
+        // 创建Vue实例
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>

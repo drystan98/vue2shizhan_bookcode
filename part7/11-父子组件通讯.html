@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        <p>总数:{{total}}</p>
+        <my-component v-on:increase="handleGetTotal" @decrease="handleGetTotal">
+        </my-component>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            // 组件模板
+            template: '\
+            <div>\
+                <button @click="handleIncrease">加1</button><br>\
+                <button @click="handleDecrease">减1</button>\
+            </div>',
+            data: function () {
+                return {
+                    counter: 0   //计数器
+                }
+            },
+            methods: {
+                handleIncrease: function () {
+                    this.counter++;
+                    this.$emit('increase', this.counter);
+                },
+                handleDecrease: function () {
+                    this.counter--;
+                    this.$emit('decrease', this.counter);
+                }
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                total: 0
+            },
+            methods: {
+                handleGetTotal: function (total) {
+                    this.total = total;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

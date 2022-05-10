@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <!-- 单个按钮直接使用 v-bind -->
+            <input type="radio" :checked="picked1">
+            <label>单选按钮</label>
+        </div>
+        <div>
+            <!-- 多个按钮使用 v-model绑定同一个数据 -->
+            <input type="radio" v-model="picked2" value="html" id="html">
+            <label for="html">HTML</label>
+            <input type="radio" v-model="picked2" value="js" id="js">
+            <label for="js">JS</label>
+            <input type="radio" v-model="picked2" value="css" id="css">
+            <label for="css">CSS</label>
+            当前选择:{{picked2}}
+        </div>
+    </div>
+
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                picked1: true,
+                picked2: 'js'
+            }
+        }) 
+    </script>
+</body>
+
+</html>

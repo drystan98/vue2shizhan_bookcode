@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <child-component>
+            <h2 slot="header">标题</h2>
+            <p>正文内容</p>
+            <p>更多的正文内容</p>
+            <div slot="footer">底部信息</div>
+        </child-component>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+
+        Vue.component('child-component', {
+            template: '\
+            <div class="container">\
+                <div class="head"> \
+                    <slot name="header">biaoti</slot>\
+                </div>\
+                <div class="main">\
+                    <slot></slot>\
+                </div>\
+                <div class="footer">\
+                    <slot name="footer">dibuxinxi</slot>\
+                </div>\
+            </div>'
+        });
+
+        var app = new Vue({
+            el: '#app',
+
+        })
+    </script>
+</body>
+
+</html>

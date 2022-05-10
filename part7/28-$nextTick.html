@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <div id="text" v-if="showView">这是一段文本</div>
+        <button @click="getText">获取文本内容</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                showView: false
+            },
+            methods: {
+                getText: function () {
+                    // this.showView = true;
+                    // var text = document.getElementById('text').innerHTML;
+                    // console.log(text);
+                    //正确写法
+                    this.showView = true;
+                    this.$nextTick(function () {
+                        var text = document.getElementById('text').innerHTML;
+                        console.log(text);
+                    });
+                    
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

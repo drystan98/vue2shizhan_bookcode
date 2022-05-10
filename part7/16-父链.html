@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        {{message}}
+        <br>
+        {{inputMessage}}
+        <br>
+        <component-a></component-a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('component-a', {
+            template: '\
+            <div>\
+                <button @click="handleEvent">传递事件</button>\
+                <br>\
+                <input @input="handleInput" v-model="inputMsg">\
+            </div>',
+            data: function () {
+                return {
+                    inputMsg: ''
+                }
+            },
+            methods: {
+                handleEvent: function () {
+                    this.$parent.message = '通过父链直接修改数据';
+                },
+                handleInput: function () {
+                    this.$parent.inputMessage = this.inputMsg;
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                inputMessage: ''
+            }
+        });
+    </script>
+</body>
+
+</html>

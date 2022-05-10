@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        <main-component></main-component>
+    </div>
+
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var Child = {
+            template: '<div>子组件</div>'
+        }
+
+        Vue.component('main-component', {
+            components: {
+                'child-component': Child
+            },
+            template: '<div>主组件<br><child-component></div>'
+        })
+
+        var app = new Vue({
+            el: '#app'
+        })
+
+    </script>
+</body>
+
+</html>

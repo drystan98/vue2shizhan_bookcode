@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        <my-component></my-component>
+    </div>
+
+    <!-- 引入Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            template: '<div>组件中的data: {{message}}</div>',
+            data: function () {
+                return {
+                    message: '你好!世界!'
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app'
+        })
+
+    </script>
+</body>
+
+</html>

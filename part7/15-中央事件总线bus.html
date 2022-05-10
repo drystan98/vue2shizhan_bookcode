@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        {{message}}
+        <br>
+        {{inputMessage}}
+        <br>
+        <component-a></component-a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        // 中央事件总线bus
+        var bus = new Vue();
+
+        Vue.component('component-a', {
+            template: '\
+            <div>\
+                <button @click="handleEvent">传递事件</button>\
+                <br>\
+                <input @input="handleInput" v-model="inputMsg">\
+            </div>',
+            data: function () {
+                return {
+                    inputMsg: ''
+                }
+            },
+            methods: {
+                handleEvent: function () {
+                    bus.$emit('on-message', '来自component-a的内容');
+                },
+                handleInput: function () {
+                    bus.$emit('input-message', this.inputMsg);
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                inputMessage: ''
+            },
+            mounted: function () {
+                var _this = this;
+                //在实例初始化时,监听来自bus实例的事件
+                bus.$on('on-message', function (msg) {
+                    _this.message = msg;
+                });
+                bus.$on('input-message', function (msg) {
+                    _this.inputMessage = msg;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

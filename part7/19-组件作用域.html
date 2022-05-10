@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 作用域是父组件 -->
+        <child-component-a v-show="showChild"></child-component-a>
+        <child-component-b></child-component-b>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        // 子组件A
+        Vue.component('child-component-a', {
+            template: '<div>子组件A</div>'
+        });
+
+        // 子组件B
+        Vue.component('child-component-b', {
+            // 作用域是子组件B
+            template: '<div v-show="showChild">子组件B</div>',
+            data: function () {
+                return {
+                    showChild: true
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                showChild: true
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+        <my-component :width="w"></my-component>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            template: '<div :style="style">组件渲染</div>',
+            props: ['width'],
+            computed: {
+                style: function () {
+                    return {
+                        width: this.width + 'px'
+                    }
+                }
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                w: 18
+            }
+        })
+    </script>
+</body>
+
+</html>

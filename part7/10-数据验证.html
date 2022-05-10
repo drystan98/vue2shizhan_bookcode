@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id='app'>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component', {
+            //props对象   
+            props: {
+                //数字类型
+                propA: Number,
+                //必须是字符串或数字类型
+                propB: [String, Number],
+                //布尔值，如果没有定义，默认值就是 true
+                propC: {
+                    type: Boolean,
+                    default: true
+                },
+                //数字,必须传
+                propD: {
+                    type: Number,
+                    requried: true
+                },
+                //如果是数组或对象，默认值必须是一个函数来返回
+                propE: {
+                    type: Array,
+                    default: function () {
+                        return [];
+                    }
+                },
+                //自定义一个验证函数
+                propF: {
+                    validator: function (value) {
+                        return value > 10;
+                    }
+                }
+            }
+        })
+
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
